@@ -9,12 +9,8 @@ const listingSchema = new Schema({
     },
     description: String,
     image: {
-        url: {
-            type: String,
-            default: "https://unsplash.com/photos/a-man-holding-a-surfboard-standing-on-top-of-a-beach-1pcMSzyNPyg",
-            set:(v) => v === "" ? "https://unsplash.com/photos/a-man-holding-a-surfboard-standing-on-top-of-a-beach-1pcMSzyNPyg" :v,
-        },
-        filename: String
+        url: String,
+        filename: String,
     },
     price: Number,
     location: String,
@@ -24,7 +20,11 @@ const listingSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref:"Review",
         }
-    ]
+    ],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref:"User",
+    },
 });
 
 listingSchema.post("findOneAndDelete", async (listing) => {

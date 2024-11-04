@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
 }
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -15,12 +14,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/users.js");
 
-
-
 const listingRouter = require("./routes/listing.js");
-const reviewsRouter = require("./routes/review.js");
+const reviewsRouter = require("./models/review.js");
 const userRouter = require("./routes/user.js");
-
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 main().then(() => {
     console.log("connected to DB");
@@ -48,14 +44,11 @@ const sessionOptions = {
 };
 app.use(session(sessionOptions));
 app.use(flash());
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -65,21 +58,17 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
     res.send("Hi I am root");
 });
-
 //app.get("/demouser", async (req, res) => {
 //    let fakeUser = new User({
 //        email: "stud@gmail.com",
 //        username: "banu",
 //    });
-
 //    let registeredUser = await User.register(fakeUser, "helloworld");
 //    res.send(registeredUser);
 //});
-
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
-app.use("/",userRouter);
-
+app.use("/", userRouter);
 
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, 'Page not found'));

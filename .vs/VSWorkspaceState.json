@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
-    "\\public\\css",
+    "\\controllers",
+    "\\models",
     "\\public\\js",
     "\\routes",
     "\\utils",
@@ -11,6 +11,6 @@
     "\\views\\layouts",
     "\\views\\listings"
   ],
-  "SelectedNode": "\\listing.js",
+  "SelectedNode": "\\controllers\\reviews.js",
   "PreviewInSolutionExplorer": false
 }

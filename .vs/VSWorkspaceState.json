@@ -1,16 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\controllers",
-    "\\models",
-    "\\public\\js",
-    "\\routes",
-    "\\utils",
-    "\\views",
-    "\\views\\includes",
-    "\\views\\layouts",
-    "\\views\\listings"
+    ""
   ],
-  "SelectedNode": "\\controllers\\reviews.js",
   "PreviewInSolutionExplorer": false
 }

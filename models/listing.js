@@ -29,11 +29,11 @@ const listingSchema = new Schema({
         type: {
             type: String,
             enum: ['Point'], // 'location type' must be a 'Point' 
-            required: true
+            /*required: true*/
         },
         coordinates: {
             type: [Number],
-            required: true
+            /*required: true*/
         }
     }
 });
